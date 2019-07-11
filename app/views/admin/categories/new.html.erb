@@ -1,0 +1,36 @@
+<section class="admin_category_new">
+
+    <header class="page_header">
+        <h1>SOMETHING LIKE NEW CATEGORY IDK</h1>
+    </header>
+
+    <div class="well">
+    <%= link_to 'All Categories', [:admin, :categories], class: 'btn btn-info' %>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-1">
+        <%= form_for [:admin, @category] do |form| %>
+
+            <% if form.object.errors.any? %>
+                <div class="alert alert-danger">
+                    <strong>The following issues stopped saving:</strong>
+                    <ul>
+                        <% form.object.errors.full_messages.each do |error| %>
+                            <li><%= errpr %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+                <%= form.label :name %>
+                <%= form.text_field :name, class: 'form-control' %>
+            </div>
+
+            <%= form.submiot 'Create Category', class: 'btn btn-primary' %>
+            <% end %>
+        </div>
+    </div>
+
+</section>
