@@ -132,5 +132,10 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+Review.create!(product_id:1, user_id:1, description:"It's too tight", rating:2)
+Review.create!(product_id:1, user_id:2, description:"Oof", rating:1)
+Review.create!(product_id:2, user_id:2, description:"I'm satisfied... I guess that's good?", rating:3)
+Review.create!(product_id:3, user_id:3, description:"Love it more than myself!", rating:5)
+
 
 puts "DONE!"
