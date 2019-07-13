@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show] do
     resources :reviews, only: [:create, :destroy]
   end
-  
+
   resources :categories, only: [:show]
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :orders, only: [:create, :show]
 
   resource :cart, only: [:show] do
     post   :add_item
@@ -22,8 +25,8 @@ Rails.application.routes.draw do
   end
 
   get '/login' => 'sessions#new'
-  post '/login' => 'session#create'
-  get '/logout' => 'session#destroy'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
