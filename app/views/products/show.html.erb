@@ -11,6 +11,16 @@
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
+      <% if current_user %>
+            <%= form_for [@product, @review] do |f|%>
+              <%= f.text_field :description%>
+              <%= f.select :rating, options_for_select(1..5)%>
+              <%= submit_tag "Submit"%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
 
       <div class="col-sm-8">
         <dl class="dl-horizontal">
@@ -24,19 +34,21 @@
           <dd><%= @product.price %></dd>
           <br>
           <div>
-            <dt>Customer Reviews</dt>
-            <dd>
+            <dt>What buyers are saying</dt>
+            <dd> 
               <% @product.reviews.each do |review| %>
-                <%puts review.user_id%>
+                <%puts review.user%>
                 <%= render 'review', review: review %>
               <% end %>
             </dd>
           </div>
-        </dl>
+          </dl>
+          </dl>
       </div>
     </div>
-
 
   </article>
 
 </section>
+
+       

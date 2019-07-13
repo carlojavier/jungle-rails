@@ -136,6 +136,9 @@ Review.create!(product_id:1, user_id:1, description:"It's too tight", rating:2)
 Review.create!(product_id:1, user_id:2, description:"Oof", rating:1)
 Review.create!(product_id:2, user_id:2, description:"I'm satisfied... I guess that's good?", rating:3)
 Review.create!(product_id:3, user_id:3, description:"Love it more than myself!", rating:5)
+Review.create!(product_id:4, user_id:3, description:"Buying nothing would've been a better use of my money!", rating:1)
+Review.create!(product_id:12, user_id:1, description:"Takes up too much space, nice tho!", rating:3)
+
 
 
 puts "DONE!"

@@ -1,27 +1,31 @@
 class ReviewsController < ApplicationController
+  before_filter :authorize
 
     def create
         @review = Review.new(review_params)
-        @review.user = current_user
         @review.product = Product.find(params[:product_id])
+        @review.user = current_user
 
-        if @review.valid?
-            @review.save
-            redirect_to product_url(params[:product_id])
-        else
-            redirect_to product_url(params[:product_id])
-        end
+      if current_user.valid?
+         @review.save
+      end
+
+      redirect_to @review.product
     end
-
-    def destroy
-        @review = Review.find params[:id]
+    
+      def destroy
+        @review = Review.find(params[:id])
         @review.destroy
-        redirect_to product_url(params[:product_id])
-    end
-
-    private
-
-    def review_params
-        params.require(:review).permit(:description, :rating)
-    end
+        redirect_to @review.product
+      end
+    
+      private
+    
+      def review_params
+        params.require(:review).permit(
+          :description,
+          :rating
+        )
+      end
+    
 end
