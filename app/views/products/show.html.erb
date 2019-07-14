@@ -12,6 +12,7 @@
         <%= image_tag @product.image.url, class: 'main-img' %>
         <% if current_user %>
         <%= form_for [@product, @review] do |f|%>
+        <dt>What did you think of this product?</dt>
         <%= f.text_field :description%>
         <%= f.select :rating, options_for_select(1..5)%>
         <%= submit_tag "Submit"%>
