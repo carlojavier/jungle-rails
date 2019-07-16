@@ -42,12 +42,21 @@ RSpec.describe User, type: :model do
       user1 = User.new(name: "Any name", email: "test@test.com", password: "word", password_confirmation:"password")
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    let!(:user1) { User.create(name: "Any name", email: "test@test.com", password: "password", password_confirmation:"password") }
+
+    it "returns nil if user credentials do not match" do
+      expect(User.authenticate_with_credentials(user1.email, "anything")).to eq(nil)
+    end
+
+    it "returns user if user credentials do match" do
+      expect(User.authenticate_with_credentials(user1.email, "password")).to eq(user1)
+    end
+
+    it "returns nil if email does not match any users" do
+      expect(User.authenticate_with_credentials("not@good.com", "password")).to eq(nil)
+    end
+  end
   
-    
-
-
-
-
-
-
 end
